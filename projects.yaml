@@ -60,7 +60,7 @@ docs:
 projects:
     # change the name, repo and the commit to match your project. You can set the commit to be a branch or a gitsha
     rgb_mixer:
-        repo:   'https://github.com/mattvenn/wrapped_rgb_mixer'
-        commit: 'mpw5'
+        repo:   'https://github.com/jeshraghian/snn-accelerator'
+        commit: 'main'
         pos:    '0 0 N'
 
