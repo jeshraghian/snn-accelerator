@@ -1,10 +1,10 @@
 --- 
 # information
 project: 
-  title: "title"
-  description: "description"
+  title: "snn-accelerator"
+  description: "Lightweight Spiking Neural Network Accelerator in SKY130"
   picture: docs/empty.png
-  author: "Author"
+  author: "Jason K. Eshraghian"
   license: LICENSE
 
 # optional interfaces you want to use: gpio, la1, la2, la3, irq, clk2, wishbone & openram
@@ -13,14 +13,14 @@ interfaces: ['la1', 'gpio']
 # test within caravel
 caravel_test:
   recipe: "coco_test"
-  directory: "caravel_test"
+  directory: "test_snn"
   id: 1
-  module_name: "wrapped_project"
+  module_name: "wrapped_snn"
 
 # module test
 module_test:
   recipe: "all" 
-  directory: "project directory"
+  directory: test_snn/test_modules
   makefile: "Makefile"
 
 # run the wrapper formal proof
@@ -35,7 +35,15 @@ openlane:
 # source required for various configs and module instantiation
 source:
     - wrapper.v
-    - other source files here
+    - src/clk_div.v
+    - src/neuron_2x.v
+    - src/neuron_4x.v
+    - src/neuron_8x.v
+    - src/neuron_slow.v
+    - src/neuron.v
+    - src/out_neuron.v
+    - src/snn.v
+
 
 # gds - check nothing on metal 5, DRC & LVS
 final:
