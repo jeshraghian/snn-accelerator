@@ -7,6 +7,8 @@ Google/Efabless/Skywater shuttle.
 
 The tools that will test and create the aggregated design are here: https://github.com/mattvenn/multi_project_tools
 
+![gds_2](https://user-images.githubusercontent.com/40262130/172643352-22e23e28-f544-4453-89c2-657292cf9d44.png)
+
 # Project info.yaml
 
 You need to fill in the fields of [info.yaml](info.yaml)
