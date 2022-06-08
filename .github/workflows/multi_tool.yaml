@@ -1,0 +1,132 @@
+name: multi_tool
+# either manually started, or on a schedule
+on: [ push, workflow_dispatch ]
+jobs:
+  multi_tool:
+    env:
+        OPENLANE_ROOT:  /home/runner/openlane
+        PDK_ROOT:       /home/runner/pdk
+        PDK:            sky130A
+        NETGEN_VERSION:         1.5.205
+        MAGIC_VERSION:          8.3.273
+
+    # ubuntu
+    runs-on: ubuntu-latest
+    steps:
+    # need the repo checked out
+    - name: checkout repo
+      uses: actions/checkout@v2
+
+    - name: multi tools
+      run: |
+        cd $HOME
+        git clone https://github.com/mattvenn/multi_project_tools.git
+        pwd
+        ls multi_project_tools
+        ls $HOME/multi_project_tools/requirements.txt
+
+    # deps for magic and netgen
+    - name: deps
+      run: sudo apt-get install -y tcsh csh tcl-dev tk-dev libcairo2-dev
+
+    # used for LVS test
+    - name: netgen
+      run: |
+        cd $HOME
+        git clone https://github.com/RTimothyEdwards/netgen
+        cd netgen
+        git checkout $NETGEN_VERSION
+        ./configure
+        make
+        sudo make install
+        netgen -batch
+
+    # magic, used for LVS
+    - name: magic
+      run: |
+        cd $HOME
+        git clone git://opencircuitdesign.com/magic
+        cd magic
+        git checkout $MAGIC_VERSION
+        ./configure
+        make
+        sudo make install
+
+    # need python
+    - name: setup python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.7.7' # install the python version needed
+# doesn't work
+#        cache: 'pip'
+#        cache-dependency-path: "/home/runner/multi_project_tools/requirements.txt"
+
+    # python deps from reqirements file, use a marketplace action
+    - name: Install Python dependencies
+      uses: py-actions/py-dependency-install@v2
+      with:
+        path: "/home/runner/multi_project_tools/requirements.txt"
+
+    # pwd
+    - name: pwd
+      run: |
+        pwd # useful debug info
+
+    # fetch all the repos
+    - name: fetch all
+      run: python $HOME/multi_project_tools/multi_tool.py --clone-shared-repos --openram --clone-repo
+
+    # install riscv gcc
+    - name: riscv gcc
+      run: |
+        cd $HOME
+        wget https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14.tar.gz
+        tar -xzf riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14.tar.gz
+
+    # build pdk
+    - name: pdk & caravel
+      run: |
+        cd $HOME
+        git clone https://github.com/efabless/caravel_user_project.git -b mpw-6c
+        cd caravel_user_project
+        make setup
+
+    # install oss fpga tools
+    - name: install oss-cad-suite
+      uses: YosysHQ/setup-oss-cad-suite@v1
+    - run: | 
+        yosys --version
+        iverilog -V
+
+    # install projects
+    - name: install project
+      run: python $HOME/multi_project_tools/multi_tool.py --create-openlane-config --copy-project --openram --copy-gds
+
+    # tests
+    - name: test gds
+      run: python $HOME/multi_project_tools/multi_tool.py --test-gds
+
+    - name: test prove tristate
+      run: python $HOME/multi_project_tools/multi_tool.py --prove-tristate --openram
+
+    - name: test ports
+      run: python $HOME/multi_project_tools/multi_tool.py --test-ports
+
+    - name: test module
+      run: python $HOME/multi_project_tools/multi_tool.py --test-module
+
+    - name: prove wrapper
+      run: python $HOME/multi_project_tools/multi_tool.py --prove-wrapper
+
+    - name: lvs
+      run: python $HOME/multi_project_tools/multi_tool.py --test-lvs 
+
+    - name: tristate-z
+      run: python $HOME/multi_project_tools/multi_tool.py --test-tristate-z
+
+    - name: docs
+      run: python $HOME/multi_project_tools/multi_tool.py --generate-doc --openram --force
+
+    # run the caravel test
+    - name: caravel test
+      run: python $HOME/multi_project_tools/multi_tool.py --test-caravel
