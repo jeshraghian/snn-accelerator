@@ -6,6 +6,7 @@ project:
   picture: gds_2.png
   author: "Jason K. Eshraghian"
   license: LICENSE
+  waive_module_test: "will do tomorrow"
 
 # optional interfaces you want to use: gpio, la1, la2, la3, irq, clk2, wishbone & openram
 interfaces: ['la1', 'gpio']
