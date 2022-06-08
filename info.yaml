@@ -9,7 +9,7 @@ project:
   waive_module_test: "will do tomorrow"
 
 # optional interfaces you want to use: gpio, la1, la2, la3, irq, clk2, wishbone & openram
-interfaces: ['gpio']
+interfaces: ['gpio', 'la1']
 
 # test within caravel
 caravel_test:
