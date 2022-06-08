@@ -1,11 +1,15 @@
-[![multi_tool](https://github.com/mattvenn/wrapped_project_template/actions/workflows/multi_tool.yaml/badge.svg)](https://github.com/mattvenn/wrapped_project_template/actions/workflows/multi_tool.yaml)
+![](../../workflows/multi_tool/badge.svg)
 
-# Information about your project
+# A Lightweight Spiking Neural Network Accelerator
 
-This is a template project you can clone and use to take part in the multi project submission to the
-Google/Efabless/Skywater shuttle.
+A spiking neural network accelerator in the SkyWater 130nm process using heterogenous time constants to model a variety of temporal dynamics. Input events can be streamed at a rate of up to 50 MEvents per second, and the accelerator can process them in a dense network with 128 hidden neurons at up to approximately 214 MHz.
 
-The tools that will test and create the aggregated design are here: https://github.com/mattvenn/multi_project_tools
+<!-- This is a template project you can clone and use to take part in the multi project submission to the
+Google/Efabless/Skywater shuttle. -->
+
+<!-- The tools that will test and create the aggregated design are here: https://github.com/mattvenn/multi_project_tools -->
+
+![gds_2](https://user-images.githubusercontent.com/40262130/172643352-22e23e28-f544-4453-89c2-657292cf9d44.png)
 
 # Project info.yaml
 
