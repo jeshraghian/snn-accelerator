@@ -1,4 +1,4 @@
-[![multi_tool](https://github.com/mattvenn/wrapped_project_template/actions/workflows/multi_tool.yaml/badge.svg)](https://github.com/mattvenn/wrapped_project_template/actions/workflows/multi_tool.yaml)
+![](../../workflows/multi_tool/badge.svg)
 
 # Information about your project
 
