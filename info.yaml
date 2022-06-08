@@ -9,7 +9,7 @@ project:
   waive_module_test: "will do tomorrow"
 
 # optional interfaces you want to use: gpio, la1, la2, la3, irq, clk2, wishbone & openram
-interfaces: ['la1', 'gpio']
+interfaces: ['gpio']
 
 # test within caravel
 caravel_test:
@@ -43,12 +43,12 @@ source:
     - src/neuron_slow.v
     - src/neuron.v
     - src/out_neuron.v
-    - src/snn.v
+    - src/wrapped_snn.v
 
 
 # gds - check nothing on metal 5, DRC & LVS
 final:
   directory: "final"
-  gds_filename: "gds/snn.gds"
-  lvs_filename: "verilog/gl/snn.v"
-  lef_filename: "lef/snn.lef"
+  gds_filename: "gds/wrapped_snn.gds"
+  lvs_filename: "verilog/gl/wrapped_snn.v"
+  lef_filename: "lef/wrapped_snn.lef"
