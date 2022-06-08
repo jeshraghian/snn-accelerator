@@ -5,7 +5,7 @@ mode prove
 smtbmc
 
 [script]
-read -formal wrapper.v clk_div.v neuron_2x.v neuron_4x.v neuron_8x.v neuron_slow.v neuron.v out_neuron.v snn.v
+read -formal wrapper.v clk_div.v neuron_2x.v neuron_4x.v neuron_8x.v neuron_slow.v neuron.v out_neuron.v wrapped_snn.v
 prep -top wrapped_snn
 
 [files]
@@ -18,4 +18,4 @@ src/neuron_8x.v
 src/neuron_slow.v
 src/neuron.v
 src/out_neuron.v
-src/snn.v
+src/wrapped_snn.v
