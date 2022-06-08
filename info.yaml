@@ -3,7 +3,7 @@
 project: 
   title: "snn-accelerator"
   description: "Lightweight Spiking Neural Network Accelerator in SKY130"
-  picture: docs/empty.png
+  picture: gds_2.png
   author: "Jason K. Eshraghian"
   license: LICENSE
 
@@ -48,6 +48,6 @@ source:
 # gds - check nothing on metal 5, DRC & LVS
 final:
   directory: "final"
-  gds_filename: "gds/project.gds"
-  lvs_filename: "verilog/gl/project.v"
-  lef_filename: "lef/project.lef"
+  gds_filename: "gds/snn.gds"
+  lvs_filename: "verilog/gl/snn.v"
+  lef_filename: "lef/snn.lef"
