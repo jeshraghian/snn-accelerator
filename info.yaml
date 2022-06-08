@@ -15,7 +15,7 @@ interfaces: ['la1', 'gpio']
 caravel_test:
   recipe: "coco_test"
   directory: "test_snn"
-  id: 1
+  id: 9
   module_name: "wrapped_snn"
 
 # module test
