@@ -5,10 +5,17 @@ mode prove
 smtbmc
 
 [script]
-read -formal wrapper.v rest of your source files.v
-prep -top wrapped_project
+read -formal wrapper.v clk_div.v neuron_2x.v neuron_4x.v neuron_8x.v neuron_slow.v neuron.v out_neuron.v snn.v
+prep -top wrapped_snn
 
 [files]
 wrapper.v
 properties.v
-rest of your source files.v
+snn/src/clk_div.v
+snn/src/neuron_2x.v
+snn/src/neuron_4x.v
+snn/src/neuron_8x.v
+snn/src/neuron_slow.v
+snn/src/neuron.v
+snn/src/out_neuron.v
+snn/src/snn.v

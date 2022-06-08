@@ -1,0 +1,42 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Wed Jun  8 08:37:39 2022
+[*]
+[dumpfile] "/home/zerotoasic/asic_tools/caravel_user_project/verilog/dv/snn/snn.vcd"
+[dumpfile_mtime] "Wed Jun  8 08:35:51 2022"
+[dumpfile_size] 203895
+[savefile] "/home/zerotoasic/asic_tools/caravel_user_project/verilog/dv/snn/snn_wave.gtkw"
+[timestart] 50100000
+[size] 1000 600
+[pos] -1 -1
+*-25.500000 62900000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 297
+[signals_width] 142
+[sst_expanded] 1
+[sst_vpaned_height] 157
+@28
+snn_tb.RSTB
+snn_tb.USER_VDD1V8
+snn_tb.USER_VDD3V3
+snn_tb.VDD1V8
+snn_tb.VDD3V3
+snn_tb.VSS
+snn_tb.clk
+snn_tb.flash_clk
+snn_tb.flash_csb
+snn_tb.flash_io0
+snn_tb.flash_io1
+snn_tb.gpio
+@22
+snn_tb.in1[7:0]
+snn_tb.mprj_io[37:0]
+@28
+snn_tb.power1
+snn_tb.power2
+snn_tb.power3
+snn_tb.power4
+snn_tb.spike_out[1:0]
+@23
+snn_tb.state1[7:0]
+[pattern_trace] 1
+[pattern_trace] 0
